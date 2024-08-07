@@ -1,0 +1,107 @@
+<html >
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #000;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    window.addEventListener("load", function () {
+      initializeGame();
+    });
+
+    function initializeGame() {
+      var board = document.getElementById("gameBoard");
+      var tiles = generateRandomTiles();
+      var emptyIndex = tiles.indexOf(16);
+
+      for (var i = 0; i < 4; i++) {
+        var row = board.insertRow();
+
+        for (var j = 0; j < 4; j++) {
+          var cell = row.insertCell();
+          var index = i * 4 + j;
+          cell.innerHTML = tiles[index];
+          cell.onclick = function () {
+            moveTile(this);
+          };
+
+          if (index === emptyIndex) {
+            cell.innerHTML = "";
+            cell.classList.add("empty");
+          }
+        }
+      }
+    }
+
+    function generateRandomTiles() {
+      var tiles = [];
+      for (var i = 1; i <= 16; i++) {
+        tiles.push(i);
+      }
+
+      for (var i = tiles.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = tiles[i];
+        tiles[i] = tiles[j];
+        tiles[j] = temp;
+      }
+
+      return tiles;
+    }
+
+    function moveTile(cell) {
+      var emptyCell = document.querySelector(".empty");
+      if (isAdjacent(cell, emptyCell)) {
+        var temp = cell.innerHTML;
+        cell.innerHTML = emptyCell.innerHTML;
+        emptyCell.innerHTML = temp;
+
+        
+        emptyCell.classList.toggle("empty");
+        cell.classList.toggle("empty");
+      }
+
+      if (isGameComplete()) {
+        alert("Congratulations! You've solved the puzzle.");
+      }
+    }
+
+    function isAdjacent(cell1, cell2) {
+      var rowIndex1 = cell1.parentNode.rowIndex;
+      var colIndex1 = cell1.cellIndex;
+      var rowIndex2 = cell2.parentNode.rowIndex;
+      var colIndex2 = cell2.cellIndex;
+
+      return (
+        (Math.abs(rowIndex1 - rowIndex2) === 1 && colIndex1 === colIndex2) ||
+        (rowIndex1 === rowIndex2 && Math.abs(colIndex1 - colIndex2) === 1)
+      );
+    }
+
+    function isGameComplete() {
+      var cells = document.getElementsByTagName("td");
+      for (var i = 0; i < cells.length - 1; i++) {
+        if (parseInt(cells[i].innerHTML) !== i + 1) {
+          return false;
+        }
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+<h2>Game of 15</h2>
+<table id="gameBoard"></table>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "excersise-5",
+  "version": "1.0.0",
+  "main": "5.1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "http": "^0.0.1-security",
+    "net": "^1.0.2"
+  }
+}

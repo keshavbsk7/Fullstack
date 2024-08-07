@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Color Table</title>
+  <style>
+    body{
+      background-color: bisque;
+    }
+    table {
+      border-collapse: collapse;
+      border: 2px solid black;
+    }
+
+    td {
+      border: 2px solid black;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<p> Guess the HexaDecimal Color</p>
+<table id="colorTable">
+  <tr>
+    <td data-color="#ff0000">#ff0000</td>
+    <td data-color="#00ff00">#00ff00</td>
+    <td data-color="#0000ff">#0000ff</td>
+    <td data-color="#ffff00">#ffff00</td>
+  </tr>
+  <tr>
+    <td data-color="#ff00ff">#ff00ff</td>
+    <td data-color="#00ffff">#00ffff</td>
+    <td data-color="#800080">#800080</td>
+    <td data-color="#ffa500">#ffa500</td>
+  </tr>
+  <tr>
+    <td data-color="#8b4513">#8b4513</td>
+    <td data-color="#008080">#008080</td>
+    <td data-color="#800000">#800000</td>
+    <td data-color="#808080">#808080</td>
+  </tr>
+  <tr>
+    <td data-color="#008000">#008000</td>
+    <td data-color="#ff69b4">#ff69b4</td>
+    <td data-color="#8a2be2">#8a2be2</td>
+    <td data-color="#ffffe0">#ffffe0</td>
+  </tr>
+</table>
+
+<script>
+  window.addEventListener('load', function() {
+    const table = document.getElementById('colorTable');
+
+    table.addEventListener('mouseover', function(event) {
+      const target = event.target;
+      if (target.tagName === 'TD') {
+        const color = target.getAttribute('data-color');
+        target.style.color = color;
+      }
+    });
+
+    table.addEventListener('mouseout', function(event) {
+      const target = event.target;
+      if (target.tagName === 'TD') {
+        target.style.color = '';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

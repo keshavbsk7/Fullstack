@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and Drop</title>
+  <style>
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px;
+    }
+
+    li {
+      background-color: #f2f2f2;
+      padding: 10px;
+      margin: 5px;
+      cursor: grab;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Reorder List Items</h2>
+
+<ul id="sortableList" ondragover="allowDrop(event)" ondrop="drop(event)">
+  <li draggable="true" ondragstart="dragStart(event)">Item 1</li>
+  <li draggable="true" ondragstart="dragStart(event)">Item 2</li>
+  <li draggable="true" ondragstart="dragStart(event)">Item 3</li>
+  <li draggable="true" ondragstart="dragStart(event)">Item 4</li>
+  <li draggable="true" ondragstart="dragStart(event)">Item 5</li>
+</ul>
+
+<script>
+  let draggedItem;
+
+  function dragStart(event) {
+    draggedItem = event.target;
+    event.dataTransfer.setData('text/plain', draggedItem.textContent);
+  }
+
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  function drop(event) {
+    event.preventDefault();
+    const target = event.target;
+
+    // Swap the positions of the dragged item and the drop target
+    if (draggedItem.tagName === 'LI') {
+      const data = event.dataTransfer.getData('text/plain');
+      draggedItem.textContent = target.textContent;
+      target.textContent = data;
+    }
+  }
+</script>
+
+</body>
+</html>

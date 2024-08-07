@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String Comparison</title>
+  <script>
+    function comp() {
+      
+      const str1 = document.getElementById('string1').value;
+      const str2 = document.getElementById('string2').value;
+
+      
+      const result = str1.length === str2.length;
+
+      
+      document.getElementById('result').innerHTML = result ? 'true' : 'false';
+    }
+  </script>
+</head>
+<body>
+
+<h2>String Comparison</h2>
+
+<form>
+  <label for="string1">Enter String 1:</label>
+  <input type="text" id="string1" name="string1" required>
+  <br>
+  <label for="string2">Enter String 2:</label>
+  <input type="text" id="string2" name="string2" required>
+  <br>
+  <button type="button" onclick="comp()">Compare Strings</button>
+</form>
+
+<p>Result: <span id="result"></span></p>
+
+</body>
+</html>

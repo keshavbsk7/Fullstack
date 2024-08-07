@@ -1,0 +1,15 @@
+.list {
+    list-style-type: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .list li {
+    display:grid; /* Display items in a row */
+    margin-right: 10px; /* Add spacing between items */
+  }
+  
+  .search-container {
+    background-color: rgb(54, 208, 36); /* Set your desired background color */
+    padding: 20px; /* Add padding for spacing */
+  }

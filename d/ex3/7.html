@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Form Validation</h2>
+
+<form id="myForm" onsubmit="validateForm(event)">
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" name="firstName">
+  <br>
+
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" name="lastName">
+  <br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+  <br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<p id="errorMessage" class="error"></p>
+
+<script>
+  function validateForm(event) {
+    const form = document.getElementById('myForm');
+    const errorMessage = document.getElementById('errorMessage');
+
+   
+    errorMessage.textContent = '';
+
+    const formFields = form.querySelectorAll('input, textarea, select');
+    for (const field of formFields) {
+      if (!field.value.trim()) {
+        errorMessage.textContent = 'Please fill in all fields.';
+        event.preventDefault(); 
+        return;
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

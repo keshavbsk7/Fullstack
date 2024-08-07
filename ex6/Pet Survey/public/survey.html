@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Animal Survey</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pet Animal Survey</h1>
+        <form id="survey-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div id="pets-info">
+                <div class="question">
+                    <p>1. What type of pet do you own?</p>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="answer1" value="Dog">
+                            Dog
+                        </label>
+                        <label>
+                            <input type="radio" name="answer1" value="Cat">
+                            Cat
+                        </label>
+                        <label>
+                            <input type="radio" name="answer1" value="Fish">
+                            Fish
+                        </label>
+                        <label>
+                            <input type="radio" name="answer1" value="Bird">
+                            Bird
+                        </label>
+                        <label>
+                            <input type="radio" name="answer1" value="Hamster">
+                            Hamster
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>2. How many pets do you own?</p>
+                    <input type="number" name="answer2" min="1" max="100">
+                </div>
+
+                <div class="question">
+                    <p>3. What is the primary reason for owning a pet?</p>
+                    <div class="options">
+                        <label>
+                            <input type="radio" name="answer3" value="Companionship">
+                            Companionship
+                        </label>
+                        <label>
+                            <input type="radio" name="answer3" value="Security">
+                            Security
+                        </label>
+                        <label>
+                            <input type="radio" name="answer3" value="Entertainment">
+                            Entertainment
+                        </label>
+                        <label>
+                            <input type="radio" name="answer3" value="Assistance">
+                            Assistance
+                        </label>
+                        <label>
+                            <input type="radio" name="answer3" value="Therapy">
+                            Therapy
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>4. How do you typically care for your pet?</p>
+                    <div class="options">
+                        <select name="answer4">
+                            <option value="Feeding">Feeding</option>
+                            <option value="Grooming">Grooming</option>
+                            <option value="Exercise">Exercise</option>
+                            <option value="Training">Training</option>
+                            <option value="Veterinary Care">Veterinary Care</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <p>5. How many hours do you spend with your pet daily?</p>
+                    <input type="number" name="answer5" min="0" max="24">
+                </div>
+                    
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+        <div id="question-results"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

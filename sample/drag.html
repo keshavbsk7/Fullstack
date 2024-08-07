@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <style>
+            li{
+                padding: 10px;
+                cursor: grab;
+                background-color: azure;
+                margin: 5px;
+            }
+
+        </style>
+        <script>
+            let draggedItem;
+            function funt2(event){
+                event.preventDefault();
+                const target=event.target;
+                if (draggedItem.tagName === 'LI') {
+                const data = event.dataTransfer.getData('text/plain');
+                draggedItem.textContent = target.textContent;
+                target.textContent = data;
+                }
+            }
+            function funt1(event){
+                event.preventDefault();
+            }
+            function funct3(event){
+                draggedItem = event.target;
+             event.dataTransfer.setData('text/plain', draggedItem.textContent);
+
+            }
+        </script>
+    </head>
+    <body>
+        <ul type="none" ondragover="funt1(event)" ondrop="funt2(event)">
+            <li draggable="true" ondragstart="funct3(event)">1</li>
+            <li draggable="true" ondragstart="funct3(event)">2</li>
+            <li draggable="true" ondragstart="funct3(event)">3</li>
+            <li draggable="true" ondragstart="funct3(event)">4</li>
+        </ul>
+    </body>
+</html>
